@@ -1,0 +1,79 @@
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <!-- <h1>Validation</h1> -->
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Add interimaire</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+<div class="col-md-12">
+    <!-- jquery validation -->
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title"> <small>Add intérimaire</small></h3>
+      </div>
+      <!-- /.card-header -->
+      <!-- form start -->
+      <form id="quickForm" novalidate="novalidate" [formGroup]="interimaireForm" (ngSubmit)="onSubmit()">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Nom</label>
+            <input type="text" name="nom" formControlName="nom" class="form-control" id="exampleInputEmail1" placeholder="nom" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" >
+            <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+              <div *ngIf="f.nom.errors.required">nom is required</div>
+          </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Prenom</label>
+            <input type="text" name="prenom" formControlName="prenom" class="form-control" id="exampleInputPassword1" placeholder="prenom" [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" >
+            <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+              <div *ngIf="f.prenom.errors.required">prenom is required</div>
+          </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Cin</label>
+            <input type="text" name="cin" formControlName="cin" class="form-control" id="exampleInputPassword1" placeholder="cin" [ngClass]="{ 'is-invalid': submitted && f.cin.errors }" >
+            <div *ngIf="submitted && f.cin.errors" class="invalid-feedback">
+              <div *ngIf="f.cin.errors.required">cin is required</div>
+          </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Date blocage</label>
+            <input type="date" name="date_blocage" formControlName="date_blocage" class="form-control" id="exampleInputPassword1" placeholder="date_blocage" [ngClass]="{ 'is-invalid': submitted && f.date_blocage.errors }" >
+            <div *ngIf="submitted && f.date_blocage.errors" class="invalid-feedback">
+              <div *ngIf="f.date_blocage.errors.required">date blocage is required</div>
+          </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Motif blocage</label>
+            <input type="text" name="motif_blocage" formControlName="motif_blocage" class="form-control" id="exampleInputPassword1" placeholder="motif_blocage" [ngClass]="{ 'is-invalid': submitted && f.motif_blocage.errors }" >
+            <div *ngIf="submitted && f.motif_blocage.errors" class="invalid-feedback">
+              <div *ngIf="f.motif_blocage.errors.required">motif blocage is required</div>
+          </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Prestataire</label>
+          <select class="custom-select mr-sm-2" formControlName="code_prestataire" name="code_prestataire"
+            [ngClass]="{ 'is-invalid': submitted && f.code_prestataire.errors }">
+            <option *ngFor="let s of listprestataire" [value]="s.id">{{s.siege_social}}</option>
+          </select>
+          <div *ngIf="submitted && f.code_prestataire.errors" class="invalid-feedback">
+            <div *ngIf="f.code_prestataire.errors.required">prestataire is required</div>
+          </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+    <!-- /.card -->
+    </div>

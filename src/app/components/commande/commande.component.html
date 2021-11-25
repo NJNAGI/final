@@ -1,0 +1,229 @@
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <!-- <h1 class="m-0">Dashboard</h1> -->
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Génération de commande </li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<form [formGroup]="commandeForm">
+
+<div class="card">
+
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="dt-buttons btn-group flex-wrap">
+                    
+                    
+                    <!-- <button class="btn btn-secondary buttons-pdf buttons-html5" tabindex="0"
+                        aria-controls="example1" type="button">
+                        <span>PDF</span>
+                    </button> -->
+                    
+                </div>
+            </div>
+            
+           
+        </div>
+        <div class="row">
+            <div class="col-sm-1 col-md-2">
+                <div class="dataTables_length" id="dataTable_length">
+                    <label>Prestataire
+                        <select name="dataTable_length" aria-controls="dataTable" (change)="updatecout()" 
+                            class="custom-select custom-select-sm form-control form-control-sm" formControlName="prestataire" name="prestataire">
+                            <option *ngFor="let p of listprestataire;let index=index" [value]="p.id">{{p.siege_social}}</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <!-- <div class="col-sm-1 col-md-2">
+                <div class="dataTables_length" id="dataTable_length">
+                    <label>Année de pointage
+                        <select name="dataTable_length" aria-controls="dataTable"
+                            class="custom-select custom-select-sm form-control form-control-sm">
+                            <option value="10">2021</option>
+                            <option value="25">2020</option>
+                            <option value="25">2019</option>
+
+                        </select>
+                    </label>
+                </div>
+            </div> -->
+            <!-- <div class="col-sm-1 col-md-2">
+                <div class="dataTables_length" id="dataTable_length">
+                    <label>Mois de paiement
+                        <select name="dataTable_length" aria-controls="dataTable"
+                            class="custom-select custom-select-sm form-control form-control-sm">
+                            <option value="10">Juillet</option>
+                            <option value="25">Juin</option>
+                            <option value="50">Mai</option>
+                            <option value="100">Avril</option>
+                        </select>
+                    </label>
+                </div>
+            </div> -->
+        </div>
+        <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+           
+            <div class="row">
+                <div class="col-sm-12">
+                    <table  id="htmlData" class="table table-bordered table-striped dataTable dtr-inline" role="grid"
+                        aria-describedby="example1_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                colspan="1" aria-sort="ascending"
+                                aria-label="Rendering engine: activate to sort column descending">Reférence demande</th>
+                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                    colspan="1" aria-sort="ascending"
+                                    aria-label="Rendering engine: activate to sort column descending">Société</th>
+                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                    colspan="1" aria-sort="ascending"
+                                    aria-label="Rendering engine: activate to sort column descending">Etablissement</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    aria-label="Browser: activate to sort column ascending">Unité organisationnelle</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    aria-label="Platform(s): activate to sort column ascending">Somme des heures théoriques</th>
+                                <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    aria-label="Engine version: activate to sort column ascending">Moyenne cout horaire</th> -->
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    aria-label="CSS grade: activate to sort column ascending">Somme cout théorique</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr class="odd" *ngFor="let l of listcomd;let index=index">
+                                <td class="sorting_1 dtr-control">{{l.demande.reference}}</td>
+                                <td class="sorting_1 dtr-control">{{l.demande.societe.code_societe}}</td>
+                                <td>{{l.demande.etab.nom}}</td>
+                                <td>{{l.demande.user.unite.nom}}</td>
+                                <td> {{getTotal()}} </td>
+                                <td> <input type="text" class="form-control" formControlName="Moyencout" name="Moyencout"  aria-describedby="basic-addon1"> 
+                                <!-- <td><button type="submit" (click)="cout()">ajouter</button> -->
+
+                            </tr>
+                           
+                         
+                          
+                        </tbody>
+                        <tfoot>
+                           
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+           
+            <!-- <div class="row">
+               
+                <div class="col-sm-12 col-md-7">
+                    <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                        <ul class="pagination">
+                            <li class="paginate_button page-item previous disabled" id="example1_previous"><a href="#"
+                                    aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                            </li>
+                            <li class="paginate_button page-item active"><a href="#" aria-controls="example1"
+                                    data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                            <li class="paginate_button page-item "><a href="#" aria-controls="example1" data-dt-idx="2"
+                                    tabindex="0" class="page-link">2</a></li>
+                            <li class="paginate_button page-item "><a href="#" aria-controls="example1" data-dt-idx="3"
+                                    tabindex="0" class="page-link">3</a></li>
+                            <li class="paginate_button page-item "><a href="#" aria-controls="example1" data-dt-idx="4"
+                                    tabindex="0" class="page-link">4</a></li>
+                            <li class="paginate_button page-item "><a href="#" aria-controls="example1" data-dt-idx="5"
+                                    tabindex="0" class="page-link">5</a></li>
+                            <li class="paginate_button page-item "><a href="#" aria-controls="example1" data-dt-idx="6"
+                                    tabindex="0" class="page-link">6</a></li>
+                            <li class="paginate_button page-item next" id="example1_next"><a href="#"
+                                    aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div> -->
+            <!-- <div class="col-sm-12 col-md-6">
+                <div class="dt-buttons btn-group flex-wrap">
+                    
+                    <div>
+                    <button class="btn btn-secondary buttons-pdf buttons-html5" tabindex="0"
+                        aria-controls="example1" type="button" (click)="openPDF()">
+                        <span>Generate PDF document</span>
+                    </button>
+                    </div>
+                </div>
+            </div> -->
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <table  id="htmlData" class="table table-bordered table-striped dataTable dtr-inline" role="grid"
+                        aria-describedby="example1_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                    colspan="1" aria-sort="ascending"
+                                    aria-label="Rendering engine: activate to sort column descending">Année</th>
+                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                    colspan="1" aria-sort="ascending"
+                                    aria-label="Rendering engine: activate to sort column descending">Mois</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    aria-label="Browser: activate to sort column ascending">Dépense réel</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    aria-label="Platform(s): activate to sort column ascending">Heure réel</th>
+                                <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    aria-label="Engine version: activate to sort column ascending">Moyenne cout horaire</th> -->
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    aria-label="CSS grade: activate to sort column ascending">Dépense théorique</th>
+                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    aria-label="CSS grade: activate to sort column ascending">Heure théorique</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    aria-label="CSS grade: activate to sort column ascending">Réference demande</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    aria-label="CSS grade: activate to sort column ascending">Code prestataire</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    aria-label="CSS grade: activate to sort column ascending">Moyen cout</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            
+                            <tr class="odd" *ngFor="let c of listcomd;let index=index" [routerLink]="['/home/detailcommande',c.id]">
+                                <td class="sorting_1 dtr-control">{{c.annee}}</td>
+                                <td>{{c.mois}}</td>
+                                <td> {{c.depensereel}} </td>
+                                <td> {{c.heurereel}} </td>
+                                <td> {{c.depensetheorique}}</td>
+                                <td> {{c.heuretheorique}}</td>
+                                <td> {{c.demande.reference}}</td>
+                                <td> {{c.prestataire.code_prestataire}}</td>
+                                <td> {{c.moyencout}}</td>
+
+
+
+
+            
+                            </tr>
+                           
+                         
+                          
+                        </tbody>
+                        
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+
+</form>

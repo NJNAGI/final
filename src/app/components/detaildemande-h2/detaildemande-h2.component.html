@@ -1,0 +1,179 @@
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <!-- <h1 class="m-0">Dashboard</h1> -->
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Traitement de demande par H2</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <title>Payment</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  </head>
+  <body>
+  <main class="page payment-page">
+    <section class="payment-form dark">
+      <div class="container">
+        <form [formGroup]="detailForm">
+          <div class="products">
+            <!-- <h4 class="title">Demande de renfort</h4> -->
+            <div class="row">
+            <div class="form-group col-sm-7">
+                <label for="card-holder">Réference</label>
+                <input id="card-holder"  formControlName="reference" name="reference" type="text" class="form-control" placeholder="reference" aria-label="reference" aria-describedby="basic-addon1">
+              </div>
+              <div class="form-group col-sm-5">
+                <label for="">Date de creation</label>
+                <div class="input-group expiration-date">
+                  <input type="text" formControlName="date_creation" name="date_creation" class="form-control" placeholder="MM" aria-label="MM" aria-describedby="basic-addon1">
+                  <!-- <span class="date-separator">/</span> -->
+                  <!-- <input type="text" class="form-control" placeholder="YY" aria-label="YY" aria-describedby="basic-addon1"> -->
+                </div>
+              </div>
+              </div>
+              <div class="row">
+              <div class="form-group col-sm-7">
+                <label for="card-holder">Demandeur</label>
+                <input id="card-holder" formControlName="demandeur" name="demandeur" type="text" class="form-control" placeholder="demandeur" aria-label="demandeur" aria-describedby="basic-addon1">
+              </div>
+              <div class="form-group col-sm-5">
+                <label for="">Societe</label>
+                <div class="input-group expiration-date">
+                  <input type="text"   formControlName="code_societe" name="code_societe" class="form-control" placeholder="societe" aria-label="MM" aria-describedby="basic-addon1">
+                  <!-- <span class="date-separator">/</span> -->
+                  <!-- <input type="text" class="form-control" placeholder="YY" aria-label="YY" aria-describedby="basic-addon1"> -->
+                </div>
+              </div>
+              </div>
+              <div class="row">
+                  <div class="form-group col-sm-7">
+                      <label class="mr-sm-2" for="inlineFormCustomSelect">Etablissement</label>
+                  <input type="text"   formControlName="id_etab" name="id_etab" class="form-control" placeholder="societe" aria-label="MM" aria-describedby="basic-addon1">
+
+                </div>
+
+                <div class="form-group col-sm-5">
+                    <label class="mr-sm-2" for="inlineFormCustomSelect">Unite organisationnelle</label>
+                    <input type="text"   formControlName="id_unite" name="id_unite" class="form-control" placeholder="societe" aria-label="MM" aria-describedby="basic-addon1">
+
+              </div>
+
+                </div>
+            <div class="total">
+                <div class="row">
+                    <div class="form-group col-sm-3">
+                        <label class="mr-sm-2" for="inlineFormCustomSelect">Motif</label>
+                    <input type="text"   formControlName="motif" name="motif" class="form-control" placeholder="societe" aria-label="MM" aria-describedby="basic-addon1">
+
+                  </div>
+
+                  <div class="form-group col-sm-3">
+                    <label class="mr-sm-2" for="inlineFormCustomSelect">Poste</label>
+                    <input type="text"   formControlName="poste" name="poste" class="form-control" placeholder="societe" aria-label="MM" aria-describedby="basic-addon1">
+
+              </div>
+
+              <div class="form-group col-sm-3">
+                <label class="mr-sm-2" for="inlineFormCustomSelect">Profil</label>
+                <input type="text"   formControlName="profil" name="profil" class="form-control" placeholder="societe" aria-label="MM" aria-describedby="basic-addon1">
+
+                </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-sm-7">
+                    <label class="mr-sm-2" for="inlineFormCustomSelect">Nature de demande</label>
+                <input type="text"   formControlName="natureDedemande" name="natureDedemande" class="form-control" placeholder="societe" aria-label="MM" aria-describedby="basic-addon1">
+
+              </div>
+
+              <div class="form-group col-sm-5">
+                  <label class="mr-sm-2" for="inlineFormCustomSelect">Régime horaire</label>
+                <input type="text"   formControlName="regimeHoraire" name="regimeHoraire" class="form-control" placeholder="societe" aria-label="MM" aria-describedby="basic-addon1">
+
+            </div>
+
+              </div>
+
+              <div class="row">
+                <div class="form-group col-sm-7">
+                    <label for="">Effectif</label>
+                <div class="input-group expiration-date">
+                  <input type="text" formControlName="effectifdemande" name="effectifdemande" class="form-control" placeholder="effectif" aria-label="MM" aria-describedby="basic-addon1">
+                </div>
+              </div>
+
+              <div class="form-group col-sm-5">
+                <label for="">Sexe</label>
+                <input class="form-control" formControlName="sexe" name="sexe" type="text"  id="flexRadioDefault1">
+
+            </div>
+
+              </div>
+
+              <div class="total">
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Nature de mission</label>
+                    <textarea class="form-control" formControlName="natureDeMission" name="natureDeMission" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+
+              </div>
+              <div class="row">
+                <div class="form-group col-sm-7">
+                    <label for="card-holder">Période</label>
+                    <input id="card-holder" formControlName="DebutDeLaMission" name="DebutDeLaMission"  type="text" class="form-control" placeholder="" aria-label="reference" aria-describedby="basic-addon1">
+                  </div>
+                  <div class="form-group col-sm-5">
+                    <label for="">Au</label>
+                    <div>
+                      <input type="text" class="form-control" formControlName="FinDeLaMission" name="FinDeLaMission" placeholder="MM"  aria-describedby="basic-addon1">
+                    </div>
+                  </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="form-group col-sm-7">
+                        <label for="card-holder">Personne à contacter</label>
+                        <input id="card-holder" type="text" formControlName="personneAcontacter" name="personneAcontacter" class="form-control" placeholder="Personne à contacter" aria-label="reference" aria-describedby="basic-addon1">
+                      </div>
+                      <div class="form-group col-sm-5">
+                        <label for="">Heure de début</label>
+                        <div class="input-group expiration-date">
+                          <input type="heure" class="form-control" formControlName="heureDebut" name="heureDebut" placeholder="00" aria-label="MM" aria-describedby="basic-addon1">
+                        </div>
+                      </div>
+                      </div>
+                      <div class="form-group">
+                        <form [formGroup]="NotificationForm">
+                        <label for="exampleFormControlTextarea1">AvisH2</label>
+                        <textarea class="form-control" formControlName="avisH2" name="avisH2" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </form>
+                      </div>
+         <div class="text-right">
+
+            <button type="button" class="btn btn-primary" (click)="onSubmit()">Envoyer à GRH</button>
+          &nbsp;&nbsp;
+          <button type="button" class="btn btn-secondary">Quitter</button>
+        </div>
+
+
+          </div>
+
+        </form>
+      </div>
+    </section>
+  </main>
+  </body>
+  </html>

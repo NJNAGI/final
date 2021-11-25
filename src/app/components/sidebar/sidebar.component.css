@@ -1,0 +1,10 @@
+.active{
+    background-color: #0059a9 !important;
+    color:white !important;
+    font-weight: bold !important;
+}
+
+a{
+    color: #0059a9 !important;
+    font-size: 0.9rem;
+}

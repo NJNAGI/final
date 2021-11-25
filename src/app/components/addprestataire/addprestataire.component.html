@@ -1,0 +1,127 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <!-- <h1>Validation</h1> -->
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Add prestataire</li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+<div class="col-md-12">
+  <!-- jquery validation -->
+  <div class="card card-primary">
+    <div class="card-header">
+      <h3 class="card-title"><small>Add prestataire</small></h3>
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    <form id="quickForm" novalidate="novalidate" [formGroup]="prestataireForm" (ngSubmit)="onSubmit()">
+      <div class="card-body">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Code prestataire</label>
+          <input type="text" name="code_prestataire" formControlName="code_prestataire" class="form-control"
+            id="exampleInputEmail1" placeholder="code prestataire"
+            [ngClass]="{ 'is-invalid': submitted && f.code_prestataire.errors }">
+          <div *ngIf="submitted && f.code_prestataire.errors" class="invalid-feedback">
+            <div *ngIf="f.code_prestataire.errors.required">code prestataire is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Siege social</label>
+          <input type="text" name="siege_social" formControlName="siege_social" class="form-control"
+            id="exampleInputPassword1" placeholder="siege social"
+            [ngClass]="{ 'is-invalid': submitted && f.siege_social.errors }">
+          <div *ngIf="submitted && f.siege_social.errors" class="invalid-feedback">
+            <div *ngIf="f.siege_social.errors.required">Siege social is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Tel</label>
+          <input type="text" name="tel" formControlName="tel" class="form-control" id="exampleInputPassword1"
+            placeholder="tel" [ngClass]="{ 'is-invalid': submitted && f.tel.errors }">
+          <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
+            <div *ngIf="f.tel.errors.required">tel is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Email</label>
+          <input type="text" name="email" formControlName="email" class="form-control" id="exampleInputPassword1"
+            placeholder="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">email is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Fax</label>
+          <input type="text" name="Fax" formControlName="Fax" class="form-control" id="exampleInputPassword1"
+            placeholder="Fax" [ngClass]="{ 'is-invalid': submitted && f.Fax.errors }">
+          <div *ngIf="submitted && f.Fax.errors" class="invalid-feedback">
+            <div *ngIf="f.Fax.errors.required">fax is required</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Date signature</label>
+          <input type="date" name="date_signature" formControlName="date_signature" class="form-control"
+            id="exampleInputPassword1" placeholder="date_signature"
+            [ngClass]="{ 'is-invalid': submitted && f.date_signature.errors }">
+          <div *ngIf="submitted && f.date_signature.errors" class="invalid-feedback">
+            <div *ngIf="f.date_signature.errors.required">date signature is required</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Fin convention</label>
+          <input type="date" name="fin_convention" formControlName="fin_convention" class="form-control"
+            id="exampleInputPassword1" placeholder="fin_convention"
+            [ngClass]="{ 'is-invalid': submitted && f.fin_convention.errors }">
+          <div *ngIf="submitted && f.fin_convention.errors" class="invalid-feedback">
+            <div *ngIf="f.fin_convention.errors.required">fin convention is required</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Site</label>
+          <input type="text" name="site" formControlName="site" class="form-control" id="exampleInputPassword1"
+            placeholder="site" [ngClass]="{ 'is-invalid': submitted && f.site.errors }">
+          <div *ngIf="submitted && f.site.errors" class="invalid-feedback">
+            <div *ngIf="f.site.errors.required">site is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Cout</label>
+        <select class="custom-select mr-sm-2" formControlName="id_cout" name="id_cout"
+          [ngClass]="{ 'is-invalid': submitted && f.id_cout.errors }">
+          <option *ngFor="let c of listcout" [value]="c.id">{{c.cout}}</option>
+        </select>
+        <div *ngIf="submitted && f.id_cout.errors" class="invalid-feedback">
+          <div *ngIf="f.id_cout.errors.required">cout is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Societe</label>
+        <select class="custom-select mr-sm-2" formControlName="code_societe" name="code_societe"
+          [ngClass]="{ 'is-invalid': submitted && f.code_societe.errors }">
+          <option *ngFor="let s of listsoc" [value]="s.id">{{s.code_societe}}</option>
+        </select>
+        <div *ngIf="submitted && f.code_societe.errors" class="invalid-feedback">
+          <div *ngIf="f.code_societe.errors.required">societe is required</div>
+        </div>
+      </div>
+
+
+      <!-- /.card-body -->
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+  <!-- /.card -->
+</div>
