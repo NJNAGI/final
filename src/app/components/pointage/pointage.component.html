@@ -1,0 +1,202 @@
+<div class="container-fluid">
+
+    <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <!-- <h1 class="m-0">Dashboard</h1> -->
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Saisie de pointage</li>
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Saisie de pointage d'une demande de renfort</h6>
+        </div>
+        <div class="card-body">
+        <form [formGroup]="affectationForm">
+
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="row">
+
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0"
+                                role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                <thead>
+                                    <tr role="row">
+
+                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable"
+                                            rowspan="1" colspan="1" aria-sort="ascending"
+                                             aria-label="Name: activate to sort column descending" style="width: 50px;">CIN</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Position: activate to sort column ascending"
+                                            style="width: 176px;">Nom intérimaire</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Position: activate to sort column ascending"
+                                            style="width: 176px;">Réference demande</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Office: activate to sort column ascending"
+                                            style="width: 78px;">Mois de pointage</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Age: activate to sort column ascending"
+                                            style="width: 31px;">Année de pointage</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Start date: activate to sort column ascending"
+                                            style="width: 75px;">Heures travaillées</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Salary: activate to sort column ascending"
+                                            style="width: 67px;">Recommander</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Salary: activate to sort column ascending"
+                                            style="width: 67px;">Temps d'attente</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Salary: activate to sort column ascending"
+                                            style="width: 67px;">Conformité</th>
+                                            <th></th>
+
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr  class="odd" *ngFor="let a of listaffectation|paginate: { itemsPerPage: 15, currentPage: p };let index=index">
+                                        <td class="col-sm-4">
+                                            <input type="text"  class="form-control" placeholder="{{a.interimaire.cin}}">
+
+                                           </td>
+                                        <td>
+                                            <input type="text" class="form-control" placeholder="{{a.interimaire.nom}}">
+                                           </td>
+                                        <td>
+                                            <input type="text"  class="form-control" placeholder="{{a.d.reference}}">
+
+                                           </td>
+
+                                        <td>
+                                            <input type="text"  formControlName="mois" name="mois" class="form-control" placeholder=" {{a.date_affectation |date:'MMMM'}}">
+
+                                        </td>
+                                        <td>
+                                            <input type="text" formControlName="annee" name="annee" class="form-control" placeholder="{{a.date_fin_mission|date:'yyyy'}}">
+
+                                        </td>
+
+
+                                        <td>
+                                            <div>
+                                                <form [formGroup]="interimaireForm">
+                                                <input type="text" formControlName="heuretravail" name="heuretravail" class="form-control" placeholder="Heure">
+                                                </form>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <select class="form-control select2bs4 select2-hidden-accessible" formControlName="recommander" name="recommander" style="width: 100%;" data-select2-id="17" tabindex="-1" aria-hidden="true">
+                                                <option selected="selected" data-select2-id="19">Oui</option>
+                                                <option data-select2-id="46">Non</option>
+                                              </select>
+                                        </td>
+                                        <td>
+                                            <select class="form-control select2bs4 select2-hidden-accessible" formControlName="tempsattente" name="tempsattente" style="width: 100%;" data-select2-id="17" tabindex="-1" aria-hidden="true">
+                                                <option selected="selected" data-select2-id="19">Elevé</option>
+                                                <option data-select2-id="46">Faible</option>
+
+                                              </select>
+                                        </td>
+                                        <td>
+                                            <select class="form-control select2bs4 select2-hidden-accessible" formControlName="conformiteprofile" name="conformiteprofile" style="width: 100%;" data-select2-id="17" tabindex="-1" aria-hidden="true">
+                                                <option selected="selected" data-select2-id="19">Elevé</option>
+                                                <option data-select2-id="46">Faible</option>
+
+                                              </select>
+                                        </td>
+                                        <td><button type="button" class="btn bg-gradient-primary"  (click)="open(a);saveheure(a);actionMethod($event)">Enregistrer</button>
+                                           </td>
+
+                                    </tr>
+
+
+
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    <!-- <div class="row">
+                        <td>
+                        <div class="col-sm-12 col-md-12">
+                            <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite"> Total des heures travaillées</div>
+                        </div>
+                        </td>
+                        <td><button (click)="priceCount()">Total</button></td>
+                        <td> <input type="text" class="form-control" placeholder=""  class="col-md-3">{{totalheure}}</td>
+                        </div> -->
+                        &nbsp;&nbsp;
+                        <!-- <div class="row">
+                            <td>
+                            <div class="col-sm-12 col-md-12">
+                                <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite"> Total des heures théoriques</div>
+                            </div>
+                            </td>
+                            <td>
+
+                                <input type="text" class="form-control" placeholder="" class="col-md-3"></td>
+                            </div> -->
+                            <!-- <div class="row">
+                                <button type="button" class="btn bg-gradient-primary">Enregistrer</button>
+                                &nbsp;&nbsp;
+                                <button type="button" class="btn bg-gradient-success">Valider</button>
+                                &nbsp;&nbsp;
+                                <button type="button" class="btn bg-gradient-secondary">Quitter</button>
+                            </div> -->
+
+                         <div class="row">
+                        <!-- <div class="col-sm-12 col-md-12">
+                            <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+                                <ul class="pagination">
+                                    <li class="paginate_button page-item previous disabled" id="dataTable_previous"><a
+                                            href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0"
+                                            class="page-link">Previous</a></li>
+                                    <li class="paginate_button page-item active"><a href="#" aria-controls="dataTable"
+                                            data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                            data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                            data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                            data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                            data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                            data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
+                                    <li class="paginate_button page-item next" id="dataTable_next"><a href="#"
+                                            aria-controls="dataTable" data-dt-idx="7" tabindex="0"
+                                            class="page-link">Next</a></li>
+                                </ul>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+    </form>
+
+
+        </div>
+
+    </div>
+
+</div>

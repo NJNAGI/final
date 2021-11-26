@@ -1,0 +1,262 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <!-- <h1 class="m-0">Dashboard</h1> -->
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Création de demande</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Payment</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+  <main class="page payment-page">
+    <section class="payment-form dark">
+      <div class="container">
+        <form [formGroup]="demandeForm">
+
+          <div>
+
+<div *ngIf="show_coor1">
+            <div class="products">
+              <div class="row">
+                <div class="form-group col-sm-7">
+                  <label for="card-holder">Réference</label>
+                  <input id="card-holder" formControlName="reference" name="reference" type="text" class="form-control" 
+                    aria-label="reference" aria-describedby="basic-addon1">
+                </div>
+                <div class="form-group col-sm-5">
+                  <label for="">Date de creation</label>
+                  <!-- {{date_creation  | date:'yyyy-MM-dd'}} -->
+                  <div class="input-group expiration-date">
+                    <input type="text" formControlName="date_creation" name="date_creation" class="form-control" placeholder="MM" aria-label="MM"
+                      aria-describedby="basic-addon1">
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="row">
+                <div class="form-group col-sm-7">
+                  <label for="card-holder">Demandeur</label>
+                  <div class="input-group expiration-date">
+                  <label class="header" name="demandeur">{{userconnect.username}}</label>
+                </div>
+                </div>
+                <div class="form-group  col-sm-7">
+                  <label for="">Societe</label>
+                  <div class="input-group expiration-date">
+                    <label for="" class="header" name="code_societe">{{userconnect.societe.code_societe}}</label>
+               
+                   
+                  </div>
+                </div>
+            
+              </div> -->
+              <div class="row">
+                <div class="form-group col-sm-7">
+                  <label class="mr-sm-2" for="inlineFormCustomSelect">Demandeur:</label>
+                  <label class="header" formControlName="demandeur" name="demandeur">{{userconnect.username}}</label>
+                 
+                </div>
+
+                <div class="form-group col-sm-5">
+                  <label class="mr-sm-2" for="inlineFormCustomSelect">Societe:</label>
+                  <label for="" class="header" name="code_societe">{{userconnect.societe.code_societe}}</label>
+                  
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="form-group col-sm-7">
+                  <label class="mr-sm-2" for="inlineFormCustomSelect">Etablissement:</label>
+                  <label class="header" formControlName="id_etab" name="id_etab"  id="inlineFormCustomSelect" >{{userconnect.etab.nom}}
+                   </label>
+                </div>
+
+                <div class="form-group col-sm-5">
+                  <label class="mr-sm-2" for="inlineFormCustomSelect">Unite organisationnelle:</label>
+                  <label  class="header" id="inlineFormCustomSelect">{{userconnect.unite.nom}}</label>
+                  
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-success btn-circle btn-lg" (click)="showcord1()">1</button>
+          &nbsp;&nbsp;
+            <button type="button" class="btn btn-success btn-circle btn-lg" (click)="showcord2()">2</button>
+
+            <div *ngIf="show_coor2">
+              <div class="total">
+                <div class="row">
+                  <div class="form-group col-sm-3">
+                    <label class="mr-sm-2" for="inlineFormCustomSelect">Motif</label>
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" formControlName="motif" name="motif">
+                      <option >Accroissement d'activité</option>
+                      <option>Pré recrutement</option>
+                      <option>Gardiennage</option>
+                      <option>Nettoyage</option>
+
+
+
+                    </select>
+                  </div>
+
+                  <div class="form-group col-sm-3">
+                    <label class="mr-sm-2" for="inlineFormCustomSelect">Poste</label>
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" formControlName="poste" name="poste">
+                      <option>Ouvrier</option>
+                      <option>Employé de service</option>
+                      <option>Employé libre-service</option>
+                      <option>Agent administratif</option>
+                      <option>Agent de sécurité</option>
+                      <option>Agent de nettoyage</option>
+
+
+
+                    </select>
+                  </div>
+
+                  <div class="form-group col-sm-3">
+                    <label class="mr-sm-2" for="inlineFormCustomSelect">Profil</label>
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" formControlName="profil" name="profil">
+                      <option>Employé de rayon</option>
+                      <option>Agent de saisie</option>
+                      <option>Chauffeur</option>
+                      <option>Manutentionnaire</option>
+
+
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+
+              <div>
+                <div class="row">
+                  <div class="form-group col-sm-7">
+                    <label class="mr-sm-2" for="inlineFormCustomSelect">Nature de demande</label>
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" formControlName="natureDedemande" name="natureDedemande">
+                      <option>Intérimaire</option>
+                      <option>Saisonnier</option>
+                      <option>Gestion de contrat</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group col-sm-5">
+                    <label class="mr-sm-2" for="inlineFormCustomSelect">Régime horaire</label>
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" formControlName="regimeHoraire" name="regimeHoraire">
+                      <option>33</option>
+                      <option>48H</option>
+                      <option>60H</option>
+
+                    </select>
+                  </div>
+
+                </div>
+
+                <div class="row">
+                  <div class="form-group col-sm-7">
+                    <label for="">Effectif</label>
+                    <div class="input-group expiration-date">
+                      <input type="text" class="form-control" formControlName="effectifdemande" name="effectifdemande" placeholder="effectif" aria-label="MM"
+                        aria-describedby="basic-addon1">
+                    </div>
+                  </div>
+
+                  <div class="form-group col-sm-5">
+                    <label for="">Sexe</label>
+                    <div class="form-check">
+                      <input class="form-check-input" formControlName="sexe" name="sexe" type="radio" value="feminin" id="flexRadioDefault1" checked>
+                      <label class="form-check-label" for="flexRadioDefault1">
+                        Féminin
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" formControlName="sexe" name="sexe" id="flexRadioDefault2" value="masculin" checked >
+                      <label class="form-check-label" for="flexRadioDefault2">
+                        Masculin
+                      </label>
+                    </div>
+
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" formControlName="sexe" name="sexe" id="flexRadioDefault2" value="indifferent" checked>
+                      <label class="form-check-label" for="flexRadioDefault2">
+                        Indifférent
+                      </label>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+            &nbsp;&nbsp;
+            <button type="button" class="btn btn-success btn-circle btn-lg" (click)="showcord3()">3</button>
+
+            <div *ngIf="show_coor3">
+              <div class="total">
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Nature de mission</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" formControlName="natureDeMission" name="natureDeMission" rows="3"></textarea>
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="form-group col-sm-7">
+                  <label for="card-holder">Période</label>
+                  <input id="card-holder" type="date" class="form-control" placeholder="" aria-label="reference"
+                    aria-describedby="basic-addon1" formControlName="DebutDeLaMission" name="DebutDeLaMission">
+                </div>
+                <div class="form-group col-sm-5">
+                  <label for="">Au</label>
+                  <div class="input-group expiration-date">
+                    <input type="date" class="form-control" placeholder="MM" aria-label="MM"
+                      aria-describedby="basic-addon1" formControlName="FinDeLaMission" name="FinDeLaMission">
+                  </div>
+                </div>
+              </div>
+              <label *ngIf="demandeForm.errors">{{ demandeForm.errors?.dates | json }}</label>
+              <div class="row">
+                <div class="form-group col-sm-7">
+                  <label for="card-holder">Personne à contacter</label>
+                  <input id="card-holder" type="text" class="form-control" placeholder="Personne à contacter"
+                    aria-label="reference" aria-describedby="basic-addon1" formControlName="personneAcontacter" name="personneAcontacter">
+                </div>
+                <div class="form-group col-sm-5">
+                  <label for="">Heure de début</label>
+                  <div class="input-group expiration-date">
+                    <input type="heure" class="form-control" placeholder="00" aria-label="MM"
+                      aria-describedby="basic-addon1" formControlName="heureDebut" name="heureDebut">
+                  </div>
+                </div>
+              </div>
+              <div class="text-right">
+                <button  type="submit" (click)="onSubmit()" class="btn btn-primary">Create demande</button>
+              </div>
+            </div>
+
+          </div>
+      
+    
+
+      </form>
+   </div>
+    </section>
+  </main>
+</body>
+
+</html>

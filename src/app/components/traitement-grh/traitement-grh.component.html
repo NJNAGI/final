@@ -1,0 +1,384 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <!-- <h1 class="m-0">Dashboard</h1> -->
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Traitement de demande GRH</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Payment</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+  <main class="page payment-page">
+    <section class="payment-form dark">
+      <div class="container">
+        <form [formGroup]="detailFormgrh">
+          <button type="button" class="btn btn-danger" (click)="showdemande()">Demande de renfort</button>
+          &nbsp;&nbsp;
+          <div *ngIf="show_demaande">
+            <div class="products">
+              <!-- <h4 class="title">Demande de renfort</h4> -->
+              <div class="row">
+              <div class="form-group col-sm-7">
+                  <label for="card-holder">Réference</label>
+                  <input id="card-holder"  formControlName="reference" name="reference" type="text" class="form-control" placeholder="reference" aria-label="reference" aria-describedby="basic-addon1">
+                </div>
+                <div class="form-group col-sm-5">
+                  <label for="">Date de creation</label>
+                  <div class="input-group expiration-date">
+                    <input type="text" formControlName="date_creation" name="date_creation" class="form-control" placeholder="MM" aria-label="MM" aria-describedby="basic-addon1">
+                    <!-- <span class="date-separator">/</span> -->
+                    <!-- <input type="text" class="form-control" placeholder="YY" aria-label="YY" aria-describedby="basic-addon1"> -->
+                  </div>
+                </div>
+                </div>
+                <div class="row">
+                <div class="form-group col-sm-7">
+                  <label for="card-holder">Demandeur</label>
+                  <input id="card-holder" formControlName="demandeur" name="demandeur" type="text" class="form-control" placeholder="demandeur" aria-label="demandeur" aria-describedby="basic-addon1">
+                </div>
+                <div class="form-group col-sm-5">
+                  <label for="">Societe</label>
+                  <div class="input-group expiration-date">
+                    <input type="text"   formControlName="code_societe" name="code_societe" class="form-control" placeholder="societe" aria-label="MM" aria-describedby="basic-addon1">
+                    <!-- <span class="date-separator">/</span> -->
+                    <!-- <input type="text" class="form-control" placeholder="YY" aria-label="YY" aria-describedby="basic-addon1"> -->
+                  </div>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-7">
+                        <label class="mr-sm-2" for="inlineFormCustomSelect">Etablissement</label>
+                    <input type="text"   formControlName="id_etab" name="id_etab" class="form-control" placeholder="societe" aria-label="MM" aria-describedby="basic-addon1">
+                        
+                  </div>
+  
+                  <div class="form-group col-sm-5">
+                      <label class="mr-sm-2" for="inlineFormCustomSelect">Unite organisationnelle</label>
+                      <input type="text"   formControlName="id_unite" name="id_unite" class="form-control" placeholder="societe" aria-label="MM" aria-describedby="basic-addon1">
+                    
+                </div>
+                  
+                  </div>
+              <div class="total">
+                  <div class="row">
+                      <div class="form-group col-sm-3">
+                          <label class="mr-sm-2" for="inlineFormCustomSelect">Motif</label>
+                      <input type="text"   formControlName="motif" name="motif" class="form-control" placeholder="societe" aria-label="MM" aria-describedby="basic-addon1">
+                          
+                    </div> 
+  
+                    <div class="form-group col-sm-3">
+                      <label class="mr-sm-2" for="inlineFormCustomSelect">Poste</label>
+                      <input type="text"   formControlName="poste" name="poste" class="form-control" placeholder="societe" aria-label="MM" aria-describedby="basic-addon1">
+                     
+                </div> 
+  
+                <div class="form-group col-sm-3">
+                  <label class="mr-sm-2" for="inlineFormCustomSelect">Profil</label>
+                  <input type="text"   formControlName="profil" name="profil" class="form-control" placeholder="societe" aria-label="MM" aria-describedby="basic-addon1">
+                
+                  </div> 
+                  </div>
+              </div>
+  
+              <div class="row">
+                  <div class="form-group col-sm-7">
+                      <label class="mr-sm-2" for="inlineFormCustomSelect">Nature de demande</label>
+                  <input type="text"   formControlName="natureDedemande" name="natureDedemande" class="form-control" placeholder="societe" aria-label="MM" aria-describedby="basic-addon1">
+                      
+                </div>
+  
+                <div class="form-group col-sm-5">
+                    <label class="mr-sm-2" for="inlineFormCustomSelect">Régime horaire</label>
+                  <input type="text"   formControlName="regimeHoraire" name="regimeHoraire" class="form-control" placeholder="societe" aria-label="MM" aria-describedby="basic-addon1">
+                    
+              </div>
+                
+                </div>
+  
+                <div class="row">
+                  <div class="form-group col-sm-7">
+                      <label for="">Effectif</label>
+                  <div class="input-group expiration-date">
+                    <input type="text" formControlName="effectifdemande" name="effectifdemande" class="form-control" placeholder="effectif" aria-label="MM" aria-describedby="basic-addon1">
+                  </div>
+                </div>
+  
+                <div class="form-group col-sm-5">
+                  <label for="">Sexe</label>
+                  <div class="form-check">
+                      <input class="form-check-input" formControlName="sexe" name="sexe" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                      <label class="form-check-label" for="flexRadioDefault1">
+                        Féminin
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input"  formControlName="sexe" name="sexe" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                      <label class="form-check-label" for="flexRadioDefault2">
+                        Masculin
+                      </label>
+                    </div>
+  
+                    <div class="form-check">
+                      <input class="form-check-input" formControlName="sexe" name="sexe" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                      <label class="form-check-label" for="flexRadioDefault2">
+                        Indifférent
+                      </label>
+                    </div>
+              </div>
+                
+                </div>
+  
+                <div class="total">
+                  <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Nature de mission</label>
+                      <textarea class="form-control" formControlName="natureDeMission" name="natureDeMission" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                  <div class="form-group col-sm-7">
+                      <label for="card-holder">Période</label>
+                      <input id="card-holder" formControlName="DebutDeLaMission" name="DebutDeLaMission"  type="text" class="form-control" placeholder="" aria-label="reference" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="form-group col-sm-5">
+                      <label for="">Au</label>
+                      <div>
+                        <input type="text" class="form-control" formControlName="FinDeLaMission" name="FinDeLaMission" placeholder="MM"  aria-describedby="basic-addon1">
+                      </div>
+                    </div>
+                    </div>
+  
+                    <div class="row">
+                      <div class="form-group col-sm-7">
+                          <label for="card-holder">Personne à contacter</label>
+                          <input id="card-holder" type="text" formControlName="personneAcontacter" name="personneAcontacter" class="form-control" placeholder="Personne à contacter" aria-label="reference" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="form-group col-sm-5">
+                          <label for="">Heure de début</label>
+                          <div class="input-group expiration-date">
+                            <input type="heure" class="form-control" formControlName="heureDebut" name="heureDebut" placeholder="00" aria-label="MM" aria-describedby="basic-addon1">
+                          </div>
+                        </div>
+                        </div>
+         
+                  
+  
+            </div>
+
+          </div>
+
+            <button type="button" class="btn btn-danger" (click)="showdecision()">Décision</button>
+            &nbsp;&nbsp;
+          <div *ngIf="show_decision">
+            <div class="form-group">
+              <div class="row">
+                <div class="form-group col-sm-7">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radio1">
+                    <label class="form-check-label">Avis hiérarchie</label>
+                  </div>
+                </div>
+                <div class="form-group col-sm-5">
+                  <a href="">Saisie pointage</a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-sm-7">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radio1" checked="">
+                    <label class="form-check-label">Rejeter</label>
+                  </div>
+                </div>
+                <div class="form-group col-sm-5">
+                  <a href="">Consultation pointage</a>
+                </div>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radio1">
+                <label class="form-check-label">Valider et envoyer bon de commande</label>
+              </div>
+            </div>
+          </div>
+
+            <button type="button" class="btn btn-danger" (click)="showcommande()">Bon de commande</button>
+            &nbsp;&nbsp;&nbsp;
+       <div *ngIf="show_commande">
+            <div class="row">
+              <div class="form-group col-sm-7 ">
+                <label class="mr-sm-2" for="inlineFormCustomSelect">Code de traitement</label>
+                <label class="mr-sm-1">14/10/2014</label>
+              </div>
+              <div class="form-group col-sm-5">
+                <label class="mr-sm-2">Périmétre</label>
+                <select class="custom-select mr-sm-2 col-lg-3" id="inlineFormCustomSelect">
+                  <option selected>Choose...</option>
+                  <option value="1">Hyper</option>
+                </select>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="form-group col-sm-7">
+                <label class="mr-sm-2" for="inlineFormCustomSelect">Prestataire</label>
+                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                  <option selected>Choose...</option>
+                  <option value="1">Adecco</option>
+                  <option value="2">SMART</option>
+                </select>
+              </div>
+
+              <div class="form-group col-sm-5">
+                <label class="mr-sm-2" for="inlineFormCustomSelect">Cout horaire</label>
+                <select class="custom-select mr-sm-2 " id="inlineFormCustomSelect">
+                  <option selected>Choose...</option>
+                  <option value="1">2240</option>
+                  <option value="2">5436</option>
+                </select>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="form-group col-sm-7">
+                <label for="card-holder">Numero Commande</label>
+                <input id="card-holder" type="text" class="form-control" placeholder="numero commande"
+                  aria-label="numero" aria-describedby="basic-addon1">
+              </div>
+              <div class="form-group col-sm-5">
+                <label for="">Date commande</label>
+                <div class="input-group expiration-date">
+                  <input type="date" class="form-control" aria-label="MM" aria-describedby="basic-addon1">
+                  <!-- <span class="date-separator">/</span> -->
+                  <!-- <input type="text" class="form-control" placeholder="YY" aria-label="YY" aria-describedby="basic-addon1"> -->
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-7">
+                <label for="formGroupExampleInput" class="form-label">Nbre jrs de repos</label>
+                &nbsp;&nbsp;
+                <label class="form-label">12</label>
+              </div>
+              <div class="form-group col-sm-5">
+                <label for="formGroupExampleInput" class="form-label">Nbre jrs théoriques</label>
+                &nbsp;&nbsp;
+                <label class="form-label">81</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-7">
+                <label for="formGroupExampleInput" class="form-label">Nbre hrs théoriques</label>
+                &nbsp;&nbsp;
+                <label class="form-label">684</label>
+              </div>
+              <div class="form-group col-sm-5">
+                <label for="formGroupExampleInput" class="form-label">Dépense théoriques</label>
+                &nbsp;&nbsp;
+                <label class="form-label">1451.520</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-7">
+                <label for="formGroupExampleInput" class="form-label">Nbre hrs réelles</label>
+                &nbsp;&nbsp;
+                <label class="form-label">624</label>
+              </div>
+              <div class="form-group col-sm-5">
+                <label for="formGroupExampleInput" class="form-label">Dépense réelles</label>
+                &nbsp;&nbsp;
+                <label class="form-label">1397.720</label>
+              </div>
+            </div>
+
+          </div>
+          <button type="button" class="btn btn-danger" (click)="showtableau()">Tableau</button>
+          &nbsp;&nbsp;
+          <button type="button" class="btn btn-danger" [routerLink]="['/home/traitementh2',demande.id]">Envoyer à H2</button>
+
+<div *ngIf="show_tableau">
+            <div class="row">
+              <div class="col-sm-12">
+                <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid"
+                  aria-describedby="example1_info">
+                  <thead>
+                    <tr role="row">
+                      <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                        aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Mois
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                        aria-label="Browser: activate to sort column ascending">Heures théoriques</th>
+                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                        aria-label="Platform(s): activate to sort column ascending">Dépense théorique</th>
+                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                        aria-label="Engine version: activate to sort column ascending">Heures réelles</th>
+                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                        aria-label="CSS grade: activate to sort column ascending">Dépense réel</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="odd">
+                      <td class="dtr-control sorting_1" tabindex="0">Janvier</td>
+                      <td>152</td>
+                      <td>215</td>
+                      <td>212</td>
+                      <td>313</td>
+                    </tr>
+                    <tr class="even">
+                      <td class="dtr-control sorting_1" tabindex="0">Février</td>
+                      <td>152</td>
+                      <td>215</td>
+                      <td>212</td>
+                      <td>313</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="dtr-control sorting_1" tabindex="0">Mars</td>
+                      <td>152</td>
+                      <td>215</td>
+                      <td>212</td>
+                      <td>313</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th rowspan="1" colspan="1">Mois</th>
+                      <th rowspan="1" colspan="1">Heures théoriques</th>
+                      <th rowspan="1" colspan="1">Dépense théorique</th>
+                      <th rowspan="1" colspan="1">Heures réelles</th>
+                      <th rowspan="1" colspan="1">Dépense réel</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+            <div class="text-right">
+              <button type="button" class="btn btn-primary">Enregistrer</button>
+              &nbsp;&nbsp;
+              <button type="button" class="btn btn-secondary">Quitter</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <!-- <h1 class="m-0">Dashboard</h1> -->
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Détail d'une commande</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Payment</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+  <main class="page payment-page">
+    <section class="payment-form dark">
+      <div class="container">
+        <form [formGroup]="detailcommande" id="htmlData">
+          <div class="col company-details">
+            <h1 class="name">
+              <a target="_blank" href="javascript:;">
+              {{commande?.prestataire.societe.code_societe}}
+               
+              </a>
+            </h1>
+            <!-- <h6> {{commande?.prestataire.societe.nom}}</h6> -->
+           
+          </div>
+         <div class="col company-details">
+          <div class="row contacts">
+            <div class="col invoice-to">
+              
+              <!-- <div class="text-gray-light">{{commande?.prestataire.siege_social}}</div> -->
+              <h4 class="to">{{commande?.prestataire.siege_social}}</h4>
+              <h6>Email: {{commande?.prestataire.email}}</h6>
+              <h6>Tel: {{commande?.prestataire.tel}}</h6>
+              
+            </div>
+            <div class="col invoice-details">
+         
+              <h4 class="invoice-id"> {{commande?.demande.reference}}</h4>
+              <h6>Date Début de la mission: {{commande?.demande.DebutDeLaMission}}</h6>
+              <h6>Date fin de la mission: {{commande?.demande.FinDeLaMission}}</h6>
+
+              
+        
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+         
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp;
+          <div class="row">
+            <div class="col-sm-12">
+              <table id="htmlData" class="table table-bordered table-striped dataTable dtr-inline" role="grid"
+                aria-describedby="example1_info">
+                <thead>
+                  <tr role="row">
+                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                      aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Année</th>
+                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                      aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Mois</th>
+                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                      aria-label="Browser: activate to sort column ascending">Dépense réel</th>
+                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                      aria-label="Platform(s): activate to sort column ascending">Heure réel</th>
+                    <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Engine version: activate to sort column ascending">Moyenne cout horaire</th> -->
+                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                      aria-label="CSS grade: activate to sort column ascending">Dépense théorique</th>
+                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                      aria-label="CSS grade: activate to sort column ascending">Heure théorique</th>
+                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                      aria-label="CSS grade: activate to sort column ascending">Moyen cout</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr>
+                    <td class="sorting_1 dtr-control">
+                      <input id="card-holder" formControlName="annee" name="annee" type="text" class="form-control"
+                        placeholder="reference" aria-label="reference" aria-describedby="basic-addon1">
+                    </td>
+                    <td>
+                      <input type="text" formControlName="mois" name="mois" class="form-control" placeholder="MM"
+                        aria-label="MM" aria-describedby="basic-addon1">
+                    </td>
+                    <td>
+                      <input type="text" formControlName="depensereel" name="depensereel" class="form-control"
+                        placeholder="societe" aria-label="MM" aria-describedby="basic-addon1">
+
+                    </td>
+                    <td>
+                      <input id="card-holder" formControlName="heurereel" name="heurereel" type="text"
+                        class="form-control" placeholder="demandeur" aria-label="demandeur"
+                        aria-describedby="basic-addon1">
+
+                    </td>
+                    <td>
+                      <input type="text" formControlName="depensetheorique" name="depensetheorique" class="form-control"
+                        placeholder="societe" aria-label="MM" aria-describedby="basic-addon1">
+
+                    </td>
+                    <td>
+                      <input type="text" formControlName="heuretheorique" name="heuretheorique" class="form-control"
+                        placeholder="societe" aria-label="MM" aria-describedby="basic-addon1">
+
+                    </td>
+
+                    <td>
+                      <input type="text" formControlName="moyencout" name="moyencout" class="form-control"
+                        placeholder="societe" aria-label="MM" aria-describedby="basic-addon1">
+
+                    </td>
+
+
+
+
+
+                  </tr>
+
+
+
+                </tbody>
+
+              </table>
+            </div>
+          </div>
+
+
+
+
+
+
+
+        </form>
+        <div class="col-sm-12 col-md-6">
+          <div class="dt-buttons btn-group flex-wrap">
+
+            <div>
+              <button class="btn btn-secondary buttons-pdf buttons-html5" tabindex="0" aria-controls="example1"
+                type="button" (click)="openPDF()">
+                <span>Generate PDF document</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+</body>
+
+</html>
