@@ -59,8 +59,8 @@ console.log(this.loginForm.value)
         localStorage.setItem('token',res.access_token)
         localStorage.setItem('refreshtoken',res.refreshToken)
         localStorage.setItem("state","0")
-       this.route.navigateByUrl('/home')
-        // window.location.href="http://localhost:4200/home"
+      //  this.route.navigateByUrl('/home')
+        window.location.href="https://angular-neji.herokuapp.com/home"
 
       }
      }, err=>{
