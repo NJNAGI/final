@@ -41,7 +41,7 @@
     </tr>
       </thead>
       <tbody>
-      <tr class="odd"  *ngFor="let d of listdemandes|paginate: { itemsPerPage: 2, currentPage: p } ;let index=index" [routerLink]="['/home/detaildemandeH1',d.id]">
+      <tr class="odd"  *ngFor="let d of listdemandes|paginate: { itemsPerPage: 15, currentPage: p } ;let index=index" [routerLink]="['/home/detaildemandeH1',d.id]">
         <td class="dtr-control sorting_1" tabindex="0" >{{d.id}} </td>
         <td>{{d.reference}}</td>
         <td>{{d.date_creation}}</td>
